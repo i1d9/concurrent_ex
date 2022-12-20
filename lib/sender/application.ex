@@ -11,7 +11,9 @@ defmodule Sender.Application do
       # Starts a worker by calling: Sender.Worker.start_link(arg)
       # {Sender.Worker, arg}
       {Task.Supervisor, name: Sender.EmailTaskSupervisor},
-      {Sender.Stack, []}
+      {Sender.Stack, []},
+      {Sender.Periodical, %{counter: 0}}
+
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
