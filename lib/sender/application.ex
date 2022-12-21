@@ -12,8 +12,10 @@ defmodule Sender.Application do
       # {Sender.Worker, arg}
       {Task.Supervisor, name: Sender.EmailTaskSupervisor},
       {Sender.Stack, []},
-      {Sender.Periodical, %{counter: 0}}
-
+      {Sender.Periodical, %{counter: 0}},
+      {DynamicSupervisor, strategy: :one_for_one, name: Sender.JobRunner},
+      PageProducer,
+      PageConsumerSupervisor
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

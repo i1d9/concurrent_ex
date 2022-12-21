@@ -16,8 +16,6 @@ defmodule Sender.Periodical do
   def handle_info(:work, current_state) do
     new_state = current_state |> Map.put(:counter, current_state.counter + 1)
     my_scheduler()
-    Logger.info("Updated State")
-    IO.inspect(new_state)
     {:noreply, new_state}
   end
 

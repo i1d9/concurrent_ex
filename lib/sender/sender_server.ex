@@ -17,7 +17,7 @@ defmodule Sender.SenderServer do
         email.status == "failed" && email.retries < state.max_retries
       end)
 
-      retried =
+    retried =
       failed
       |> Enum.map(fn failor ->
         IO.puts("Retrying email #{failor.email}...")
